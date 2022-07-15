@@ -192,7 +192,7 @@ export default function Signup() {
           </FormContainer>
 
           <SubmitButton>Create Account</SubmitButton>
-          <LoginLink href='/login' linkText='Login here'>Already have an account?</LoginLink>
+          <LoginLink href='/login' linkText='Login'>Already have an account?</LoginLink>
 
         </MainCard>
       </CenterContent>
