@@ -36,7 +36,11 @@ export default function Signup() {
     if (!password) {
       setPasswordInvalid('Password is required')
     } else {
-      setPasswordInvalid('')
+      if(password.length < 6) {
+        setPasswordInvalid('Password must be at least 6 characters')
+      } else {
+        setPasswordInvalid('')
+      }
     }
     return !emailInvalid && !passwordInvalid
   }
