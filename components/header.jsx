@@ -62,7 +62,7 @@ export default function Header() {
 
       <Nav>
         {navLinks.map(({ name, href }) => (
-          <NavItem href={href} key={p.href}>
+          <NavItem href={href} key={href}>
             {name}
           </NavItem>
         ))}
