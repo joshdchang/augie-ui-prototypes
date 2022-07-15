@@ -14,7 +14,7 @@ The `/signup` page is the only one currently done (`pages/signup.jsx`)
 
 `pages/`
   - This directory enables routing based on file system - React components in this directory become pages
-  - Dynamic routing is available (i.e. `localhost:3000/articles/5` routed to `pages/articles/[id].jsx`, with `5` available as a property to the component)
+  - Dynamic routing is available (i.e. `localhost:3000/articles/5` would be routed to `pages/articles/[id].jsx`, with `5` available as a property to the component)
   - `pages/_app.jsx` and `pages/_document.jsx` are used to customize app structure, but can mostly be ignored
 
 `components/`
