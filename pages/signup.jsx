@@ -56,7 +56,7 @@ export default function Signup() {
             { loading ? <i className='pi pi-spin pi-spinner px-1' /> : null }
             <span className='text-center w-full'>{loading ? 'Loading' : 'Create Account'}</span>
           </Button>
-          <p className='text-lg text-center text-slate-300'>Already have an account? <Link href='/login'><a className='text-blue-400 mx-1'>Login here</a></Link></p>
+          <p className='text-lg text-center text-slate-300'>Already have an account? <Link href='/login'><a className='text-blue-400 hover:text-blue-600 transition-colors mx-1'>Login here</a></Link></p>
         </div>
       </div>
     </>

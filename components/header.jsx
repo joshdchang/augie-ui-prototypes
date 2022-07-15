@@ -31,7 +31,7 @@ export default function Header() {
         ))}
       </div>
       <Link href="/">
-        <img src="/augie-logo.svg" className="absolute right-24 w-32 top-8" />
+        <img src="/augie-logo.svg" className="absolute right-24 w-32 top-8 hover:cursor-pointer" />
       </Link>
     </div>
   )
