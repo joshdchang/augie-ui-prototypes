@@ -33,6 +33,7 @@ The idea is to encourage both fast prototyping and scalable modularization
   - Has the side effect of making the return into a self-documenting template for easily understanding the structure of page
 3. As necessary, generalize and nest components further (within single page)
 4. As necessary, convert to local components into global component - allows for single source of truth for the whole website
+One of the main reasons behind this pattern: Using Tailwind with deeply nested CSS Grids makes building production-ready layouts and components very easy
 
 ## Recommended extensions
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
