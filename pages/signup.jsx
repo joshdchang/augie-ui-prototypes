@@ -137,7 +137,7 @@ export default function Signup() {
     />
   )
   const LoginLink = p => (
-    <p className='text-lg text-center text-slate-300 grid gap-2'>
+    <p className='text-lg text-center text-slate-300 grid gap-2 grid-flow-col justify-center'>
       {p.children}
       <Link href={p.href}>
         <a className='text-blue-400 hover:text-blue-600 transition-colors'>
