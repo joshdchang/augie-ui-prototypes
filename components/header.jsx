@@ -25,7 +25,7 @@ export default function Header() {
       <div className="h-3 bg-[#513252] w-[calc(100%-16rem)] rounded-[0_0_1rem_0]"></div>
       <div className="grid gap-8 grid-flow-col justify-start p-8 px-24">
         {navbar.map(({ name, href }) => (
-          <Link href={href}>
+          <Link href={href} key={href}>
             <a className="text-slate-300 hover:text-white transition-colors text-lg">{name}</a>
           </Link>
         ))}
