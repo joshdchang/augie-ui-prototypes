@@ -18,17 +18,22 @@ The `/signup` page is the only one currently done (`pages/signup.jsx`)
   - `components/layout.jsx` - default layout
   - `components/header.jsx` - universal header
   - `components/footer.jsx` - universal footer
+
 `public/`
   - static assets – available from anywhere (i.e. `public/logo.svg` becomes `localhost:3000/logo.svg`)
+
 `styles/`
   - used to hold stylesheets - can mostly be ignored when using Tailwind
+
 `next.config.js`
   - configuration file for Next.js - set options (i.e. whether to use Static Site Generation, Server Side Rendering, or Client-side Rendering)
+
 `tailwind.config.js`
   - configuration file for Tailwind - set options and customize theme
 
 ## Programming pattern
 The idea is to encourage both fast prototyping and scalable modularization
+
 1. Prototype components in place with Tailwind - very fast and intuitive
 2. Convert to local component - allows for easy reuse and a single source of truth on page (this has the side effect of making the return into a self-documenting template for easily understanding the structure of page)
 3. As necessary, generalize and nest components further (within single page)
