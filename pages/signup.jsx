@@ -11,6 +11,15 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      alert('Username: ' + email + '\nPassword: ' + password)
+    }, 2000)
+  }
+
   return (
     <>
       <Head>
@@ -52,7 +61,7 @@ export default function Signup() {
               <i className='pi pi-lock px-1' />
             </span>
           </div>
-          <Button className='p-button p-button-rounded' disabled={loading} onClick={() => {setLoading(true)}}>
+          <Button className='p-button p-button-rounded' disabled={loading} onClick={handleSubmit}>
             { loading ? <i className='pi pi-spin pi-spinner px-1' /> : null }
             <span className='text-center w-full'>{loading ? 'Loading' : 'Create Account'}</span>
           </Button>
