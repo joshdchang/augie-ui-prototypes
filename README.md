@@ -1,5 +1,6 @@
 # Augie UI Prototypes
 This repo demonstrates using Tailwind and Next.js to create a UI
+
 The `/signup` page is the only one currently done (`pages/signup.jsx`)
 
 ## Preview
@@ -29,8 +30,7 @@ The `/signup` page is the only one currently done (`pages/signup.jsx`)
 ## Programming pattern
 The idea is to encourage both fast prototyping and scalable modularization
 1. Prototype components in place with Tailwind - very fast and intuitive
-2. Convert to local component - allows for easy reuse and a single source of truth on page
-  - Has the side effect of making the return into a self-documenting template for easily understanding the structure of page
+2. Convert to local component - allows for easy reuse and a single source of truth on page (this has the side effect of making the return into a self-documenting template for easily understanding the structure of page)
 3. As necessary, generalize and nest components further (within single page)
 4. As necessary, convert to local components into global component - allows for single source of truth for the whole website
 One of the main reasons behind this pattern: Using Tailwind with deeply nested CSS Grids makes building production-ready layouts and components very easy
