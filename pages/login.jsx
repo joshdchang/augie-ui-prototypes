@@ -1,16 +1,16 @@
 
+// routes to /login
+
 import Head from "next/head"
 
 export default function Signup() {
   return (
     <>
       <Head>
-        <title>Login – Augie UI Prototypes</title>
-        <meta name="description" content="Josh's prototypes for the Augie UI he is making while he learns React/Next" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Login - Augie UI Prototypes</title>
       </Head>
 
-      <h1>Login Page</h1>
+      <p>Login Page</p>
     </>
   )
 }

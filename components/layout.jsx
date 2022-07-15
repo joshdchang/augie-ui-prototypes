@@ -1,3 +1,6 @@
+
+// the universal layout of the app (inside the app)
+
 import Header from './header.jsx'
 import Footer from './footer.jsx'
 

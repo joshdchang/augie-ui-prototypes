@@ -1,3 +1,6 @@
+
+// the structure of the app (inside the document)
+
 import '../styles/globals.css'
 
 import Layout from '../components/layout.jsx'
