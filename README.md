@@ -41,10 +41,10 @@ The following steps describe a consistent pattern of progressive abstraction to 
 
 The idea is to encourage both fast prototyping and scalable modularization
 
-1. Prototype components in place with Tailwind (probably using CSS Grid) - this is very fast and intuitive
-2. Convert inline components into local components - this allows for a single source of truth within a page, which is especially important for Tailwind classes; if components are descriptively named, this will also turn the return of the component into a self-documenting template for easily understanding the structure of page
+1. Prototype small peices of UI in place with Tailwind (probably using CSS Grid) - this is very fast and intuitive
+2. Convert inline peices of UI into local components - this allows for a single source of truth within a page, which is especially important for Tailwind classes; if these components are descriptively named, this will also turn the return of the page into a glancable, self-documenting template for easily understanding the page's structure
 3. As necessary, generalize and nest components further
-4. As necessary, convert local components into global component - allows for single source of truth for the whole website
+4. As necessary, convert local components into global components - allows for single source of truth for the whole website
 
 One of the main reasons this pattern is effective (in my opinion) is because using Tailwind with deeply nested CSS Grids makes building production-ready (predictable and browser-consistent) layouts and components very easy
 
