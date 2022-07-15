@@ -9,7 +9,6 @@ export default function Signup() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [visible, setVisible] = useState(false)
   const [loading, setLoading] = useState(false)
 
   return (
@@ -24,7 +23,7 @@ export default function Signup() {
         <div className='bg-slate-800 w-full max-w-lg rounded-2xl p-12 grid gap-8 text-center'>
           <h2 className='text-2xl font-semibold z-10'>Sign Up and Start Creating!</h2>
           <div className='text-lg text-slate-300 bg-slate-300 text-center border-b-[1px] border-b-slate-300 leading-[1px] my-4'>
-            <span className='bg-slate-800 p-4'>Create An Account With</span>
+            <span className='bg-slate-800 p-4'>Create an account with</span>
           </div>
           <div className='grid gap-4 grid-flow-col'>
             <Button className='p-2 grid justify-center grid-flow-col p-button-secondary p-button-rounded' aria-label='Google'>
@@ -41,7 +40,7 @@ export default function Signup() {
             </Button>
           </div>
           <div className='text-lg text-slate-300 bg-slate-300 text-center border-b-[1px] border-b-slate-300 leading-[1px] my-4'>
-            <span className='bg-slate-800 p-4'>Or Use Your Email</span>
+            <span className='bg-slate-800 p-4'>Or use your email</span>
           </div>
           <div className='grid gap-4'>
             <span className='p-input-icon-left'>
