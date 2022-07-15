@@ -1,23 +1,61 @@
+
+// TODO - email validation
+
+import { useState, useEffect } from 'react'
+
 import Head from 'next/head'
-import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
-import { useState } from 'react';
-import Link from 'next/link';
+import Link from 'next/link'
+
+import { Button } from 'primereact/button'
+import { InputText } from 'primereact/inputtext'
+import { Password } from 'primereact/password'
 
 export default function Signup() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [emailInvalid, setEmailInvalid] = useState('')
+  const [passwordInvalid, setPasswordInvalid] = useState('')
+  const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    checkValidity()
+  }, [email, password])
+
+  function checkValidity() {
+    if (!email) {
+      setEmailInvalid('Email is required')
+    } else {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setEmailInvalid('Email is invalid')
+      } else {
+        setEmailInvalid('')
+      }
+    }
+    if (!password) {
+      setPasswordInvalid('Password is required')
+    } else {
+      setPasswordInvalid('')
+    }
+    return !emailInvalid && !passwordInvalid
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      alert('Username: ' + email + '\nPassword: ' + password)
-    }, 2000)
+
+    setSubmitted(true)
+
+    if (checkValidity()) {
+      setLoading(true)
+      setTimeout(() => {
+        alert('Username: ' + email + '\nPassword: ' + password)
+        setLoading(false)
+        setEmail('')
+        setPassword('')
+        setSubmitted(false)
+      }, 2000)
+    }
   }
 
   return (
@@ -52,17 +90,23 @@ export default function Signup() {
             <span className='bg-slate-800 p-4'>Or use your email</span>
           </div>
           <div className='grid gap-4'>
-            <span className='p-input-icon-left'>
-              <i className='pi pi-envelope px-1' />
-              <InputText className='w-full pl-4' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type='email' />
-            </span>
-            <span className='p-input-icon-left'>
-              <Password className='w-full' inputClassName='w-full pl-10' value={password} onChange={(e) => setPassword(e.target.value)} toggleMask placeholder='Password' />
-              <i className='pi pi-lock px-1' />
-            </span>
+            <div className='grid gap-1'>
+              <span className='p-input-icon-left'>
+                <i className='pi pi-envelope px-1' />
+                <InputText className={'w-full pl-4 ' + (emailInvalid && submitted ? 'p-invalid' : '')} value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type='email' />
+              </span>
+              {emailInvalid && submitted && <small className='p-error'>{emailInvalid}</small>}
+            </div>
+            <div className='grid gap-1'>
+              <span className='p-input-icon-left'>
+                <Password className={'w-full ' + (passwordInvalid && submitted ? 'p-invalid' : '')} inputClassName='w-full pl-10' value={password} onChange={(e) => setPassword(e.target.value)} toggleMask placeholder='Password' />
+                <i className='pi pi-lock px-1' />
+              </span>
+              {passwordInvalid && submitted && <small className='p-error'>{passwordInvalid}</small>}
+            </div>
           </div>
           <Button className='p-button p-button-rounded' disabled={loading} onClick={handleSubmit}>
-            { loading ? <i className='pi pi-spin pi-spinner px-1' /> : null }
+            {loading ? <i className='pi pi-spin pi-spinner px-1' /> : null}
             <span className='text-center w-full'>{loading ? 'Loading' : 'Create Account'}</span>
           </Button>
           <p className='text-lg text-center text-slate-300'>Already have an account? <Link href='/login'><a className='text-blue-400 hover:text-blue-600 transition-colors mx-1'>Login here</a></Link></p>
