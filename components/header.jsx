@@ -36,7 +36,7 @@ export default function Header() {
     </div>
   )
   const NavItem = p => (
-    <Link href={p.href} key={p.href}>
+    <Link href={p.href}>
       <a className="text-slate-300 hover:text-white transition-colors text-lg">
         {p.children}
       </a>
@@ -62,7 +62,7 @@ export default function Header() {
 
       <Nav>
         {navLinks.map(({ name, href }) => (
-          <NavItem href={href}>
+          <NavItem href={href} key={p.href}>
             {name}
           </NavItem>
         ))}
