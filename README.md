@@ -1,6 +1,6 @@
 # Augie UI Prototypes
 
-This repo demonstrates using Tailwind and Next.js to create a UI
+This repo demonstrates using Tailwind and Next.js to create UI
 
 The `/signup` page is the only one currently done (`pages/signup.jsx`)
 
