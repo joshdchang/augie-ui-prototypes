@@ -2,7 +2,7 @@
 
 This repo demonstrates using Tailwind and Next.js to create UI
 
-The `/signup` page is the only one currently done (`pages/signup.jsx`)
+The [Sign Up page](https://augie-ui-prototypes.vercel.app/signup) is the only one currently done (`pages/signup.jsx`)
 
 ## Preview
 

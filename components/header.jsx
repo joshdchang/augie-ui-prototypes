@@ -28,7 +28,7 @@ export default function Header() {
     </header>
   )
   const ColorBar = p => (
-    <div className={`h-3 bg-[${p.color}] w-[calc(100%-${p.offset})] ${p.offset && 'rounded-[0_0_1rem_0]'}`}></div>
+    <div className={`h-3 ${p.color} ${p.offset} ${p.offset && 'rounded-[0_0_1rem_0]'}`}></div>
   )
   const Nav = p => (
     <div className="grid gap-8 grid-flow-col justify-start p-8 px-24">
@@ -55,10 +55,10 @@ export default function Header() {
   return (
     <Header>
 
-      <ColorBar color='#FFC18E' />
-      <ColorBar color='#CA4E79' />
-      <ColorBar color='#7A4069' offset='14rem' />
-      <ColorBar color='#513252' offset='16rem' />
+      <ColorBar color='bg-[#FFC18E]' />
+      <ColorBar color='bg-[#CA4E79]' />
+      <ColorBar color='bg-[#7A4069]' offset='w-[calc(100%-14rem)]' />
+      <ColorBar color='bg-[#513252]' offset='w-[calc(100%-16rem)]' />
 
       <Nav>
         {navLinks.map(({ name, href }) => (
