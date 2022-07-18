@@ -58,7 +58,7 @@ const InputContainer = p => (
       {p.children}
       <i className={`pi px-1 pi-${p.icon}`} />
     </span>
-    {p.invalid && submitted && <small className='p-error'>{p.invalid}</small>}
+    {p.invalid && p.submitted && <small className='p-error'>{p.invalid}</small>}
   </div>
 )
 const OtherLink = p => (
@@ -99,27 +99,25 @@ export default function Auth(props) {
   }, [email, password])
 
   function checkValidity() {
-    if (submitted) {
-      if (!email) {
-        setEmailInvalid('Email is required')
+    if (!email) {
+      setEmailInvalid('Email is required')
+    } else {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setEmailInvalid('Email is invalid')
       } else {
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          setEmailInvalid('Email is invalid')
-        } else {
-          setEmailInvalid('')
-        }
+        setEmailInvalid('')
       }
-      if (!password) {
-        setPasswordInvalid('Password is required')
-      } else {
-        if (password.length < 6) {
-          setPasswordInvalid('Password must be at least 6 characters')
-        } else {
-          setPasswordInvalid('')
-        }
-      }
-      return !emailInvalid && !passwordInvalid
     }
+    if (!password) {
+      setPasswordInvalid('Password is required')
+    } else {
+      if (password.length < 6) {
+        setPasswordInvalid('Password must be at least 6 characters')
+      } else {
+        setPasswordInvalid('')
+      }
+    }
+    return !emailInvalid && !passwordInvalid
   }
 
   function handleSubmit(e) {
@@ -131,7 +129,7 @@ export default function Auth(props) {
       setLoading(true)
 
       // simulate send to server
-      props.onSubmit({ email, password, setEmail, setPassword, setLoading, setSubmitted })
+      props.onSubmit({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted })
     }
   }
 
@@ -152,7 +150,11 @@ export default function Auth(props) {
         <CardDivider> {props.emailDivider} </CardDivider>
         <FormContainer>
 
-          <InputContainer icon='envelope' invalid={emailInvalid}>
+          <InputContainer
+            icon='envelope'
+            invalid={emailInvalid}
+            submitted={submitted}
+          >
             <InputText
               type='email'
               value={email}
@@ -162,7 +164,11 @@ export default function Auth(props) {
             />
           </InputContainer>
 
-          <InputContainer icon='lock' invalid={passwordInvalid}>
+          <InputContainer
+            icon='lock'
+            invalid={passwordInvalid}
+            submitted={submitted}
+          >
             <Password
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -179,7 +185,7 @@ export default function Auth(props) {
           loading={loading}
           handleSubmit={handleSubmit}
         >
-          {props.submitButton} 
+          {props.submitButton}
         </SubmitButton>
 
         <OtherLink href={props.otherLinkHref} linkText={props.otherLinkText}>{props.otherQuestion}</OtherLink>

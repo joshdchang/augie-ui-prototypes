@@ -7,8 +7,14 @@ import Auth from '../components/auth.jsx'
 
 export default function Signup() {
 
-  const signup = (data) => {
-    alert('Username: ' + data.email + '\nPassword: ' + data.password)
+  const signup = ({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted }) => {
+    setTimeout(() => {
+      alert('Username: ' + email + '\nPassword: ' + password)
+      setLoading(false)
+      setSubmitted(false)
+      setEmail('')
+      setPassword('')
+    }, 1000)
   }
 
   // template (very self-documenting)
