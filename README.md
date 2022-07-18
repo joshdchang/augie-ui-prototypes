@@ -2,7 +2,7 @@
 
 This repo demonstrates using Tailwind and Next.js to create UI
 
-The [Sign Up page](http://localhost:3000/signup) is the only one currently done (`pages/signup.jsx`)
+The [Sign Up page](https://augie-ui-prototypes.vercel.app/signup) is the only one currently done (`pages/signup.jsx`)
 
 ## Preview
 
@@ -10,7 +10,7 @@ The [Sign Up page](http://localhost:3000/signup) is the only one currently done 
 2. `npm run dev`
 3. [https://localhost:3000/signup](https://localhost:3000/signup)
 
-## Directory structure
+## Directory Structure
 
 `pages/`
   - This directory enables routing based on file system - React components in this directory become pages
@@ -35,7 +35,7 @@ The [Sign Up page](http://localhost:3000/signup) is the only one currently done 
 `tailwind.config.js`
   -  This is the configuration file for Tailwind - it is used to set Tailwind options and customize the theme
 
-## Programming pattern
+## Design Pattern
 
 The following steps describe a consistent pattern of progressive abstraction to be used when building out a page (in this context)
 
@@ -48,7 +48,7 @@ The idea is to encourage both fast prototyping and scalable modularization
 
 One of the main reasons this pattern is effective (in my opinion) is because using Tailwind with deeply nested CSS Grids makes building production-ready (predictable and browser-consistent) layouts and components very easy
 
-## Recommended extensions
+## Recommended Extensions
 
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [IntelliSense for CSS class names in HTML](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)
