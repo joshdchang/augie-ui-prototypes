@@ -10,7 +10,7 @@ export default function Examples() {
         <title>Dashboard - Augie UI Prototypes</title>
       </Head>
 
-      <p>Dashboard Page</p>
+      <p>Login successful!</p>
     </>
   )
 }

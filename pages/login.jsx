@@ -3,7 +3,8 @@
 
 import Head from 'next/head'
 import Auth from '../components/auth.jsx'
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client"
+import { useRouter } from 'next/router'
 
 const LOGIN = gql`mutation LoginUser($input: SignInInput!) {
   signInUser(input: $input)
@@ -12,6 +13,7 @@ const LOGIN = gql`mutation LoginUser($input: SignInInput!) {
 export default function Login() {
 
   const [login] = useMutation(LOGIN)
+  const router = useRouter()
 
   return (
     <>
@@ -31,9 +33,7 @@ export default function Login() {
 
               // save token
               localStorage.setItem('token', res.data.signInUser)
-
-              console.log(res)
-              alert('Login successful!')
+              router.push('/dashboard')
 
             } catch (e) {
               console.error(e)
