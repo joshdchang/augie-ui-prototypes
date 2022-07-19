@@ -16,8 +16,7 @@ export default function Signup() {
       setPassword('')
     }, 1000)
   }
-
-  // template (very self-documenting)
+  
   return (
     <>
       <Head>

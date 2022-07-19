@@ -17,7 +17,6 @@ export default function Login() {
     }, 1000)
   }
 
-  // template (very self-documenting)
   return (
     <>
       <Head>

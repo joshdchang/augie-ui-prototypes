@@ -133,7 +133,7 @@ export default function Auth(props) {
     }
   }
 
-  // template (very self-documenting)
+  // template (very self-documenting I think)
   return (
     <CenterContent>
       <MainCard>
