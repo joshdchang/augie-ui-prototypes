@@ -29,14 +29,18 @@ export default function Login() {
                 }
               })
 
+              // save token
+              localStorage.setItem('token', res.data.signInUser)
+
               console.log(res)
               alert('Login successful!')
-              
+
             } catch (e) {
 
               console.error(e)
               alert(e)
 
+              // reset form
               setLoading(false)
               setSubmitted(false)
               setEmail('')
