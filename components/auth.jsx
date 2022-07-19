@@ -9,82 +9,82 @@ import { InputText } from 'primereact/inputtext'
 import { Password } from 'primereact/password'
 
 // local components
-const CenterContent = p => (
+const CenterContent = ({ children }) => (
   <div className='grid justify-items-center'>
-    {p.children}
+    {children}
   </div>
 )
-const MainCard = p => (
+const MainCard = ({ children }) => (
   <div className='bg-slate-800 w-full max-w-lg rounded-2xl p-11 grid gap-7 text-center'>
-    {p.children}
+    {children}
   </div>
 )
-const CardHeader = p => (
+const CardHeader = ({ children }) => (
   <h2 className='text-2xl font-semibold z-10'>
-    {p.children}
+    {children}
   </h2>
 )
-const CardDivider = p => (
+const CardDivider = ({ children }) => (
   <div className='text-lg text-slate-300 bg-slate-300 text-center border-b-[1px] border-b-slate-300 leading-[1px] my-4'>
     <span className='bg-slate-800 p-4'>
-      {p.children}
+      {children}
     </span>
   </div>
 )
-const SSOContainer = p => (
+const SSOContainer = ({ children }) => (
   <div className='grid gap-4 grid-flow-col'>
-    {p.children}
+    {children}
   </div>
 )
-const SSOButton = p => (
+const SSOButton = ({ children, service }) => (
   <Button
     className='p-2 grid justify-center grid-flow-col p-button-secondary p-button-rounded'
-    aria-label={p.service}
+    aria-label={service}
   >
-    <i className={`px-1 pi pi-${p.service}`}></i>
+    <i className={`px-1 pi pi-${service}`}></i>
     <span className='px-2'>
-      {p.children}
+      {children}
     </span>
   </Button>
 )
-const FormContainer = p => (
+const FormContainer = ({ children }) => (
   <div className='grid gap-4'>
-    {p.children}
+    {children}
   </div>
 )
-const InputContainer = p => (
+const InputContainer = ({ children, invalid, icon, submitted }) => (
   <div className='grid gap-1'>
     <span className='p-input-icon-left'>
-      {p.children}
-      <i className={`pi px-1 pi-${p.icon}`} />
+      {children}
+      <i className={`pi px-1 pi-${icon}`} />
     </span>
-    {p.invalid && p.submitted && <small className='p-error'>{p.invalid}</small>}
+    {invalid && submitted && <small className='p-error'>{invalid}</small>}
   </div>
 )
-const OtherLink = p => (
+const OtherLink = ({ children, href, linkText }) => (
   <p className='text-lg text-center text-slate-300 grid gap-2 grid-flow-col justify-center'>
-    {p.children}
-    <Link href={p.href}>
+    {children}
+    <Link href={href}>
       <a className='text-blue-400 hover:text-blue-600 transition-colors'>
-        {p.linkText}
+        {linkText}
       </a>
     </Link>
   </p>
 )
-const SubmitButton = p => (
+const SubmitButton = ({ children, loading, handleSubmit }) => (
   <Button
     className='p-button p-button-rounded'
-    disabled={p.loading}
-    onClick={p.handleSubmit}
+    disabled={loading}
+    onClick={handleSubmit}
   >
-    {p.loading && <i className='pi pi-spin pi-spinner px-1' />}
+    {loading && <i className='pi pi-spin pi-spinner px-1' />}
     <span className='text-center w-full'>
-      {p.loading ? 'Loading' : p.children}
+      {loading ? 'Loading' : children}
     </span>
   </Button>
 )
 
-export default function Auth(props) {
+export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref }) {
 
   // form logic
   const [email, setEmail] = useState('')
@@ -138,16 +138,16 @@ export default function Auth(props) {
     <CenterContent>
       <MainCard>
 
-        <CardHeader> {props.title} </CardHeader>
+        <CardHeader> {title} </CardHeader>
 
-        <CardDivider> {props.SSODivider} </CardDivider>
+        <CardDivider> {SSODivider} </CardDivider>
         <SSOContainer>
           <SSOButton service='google'>Google</SSOButton>
           <SSOButton service='facebook'>Facebook</SSOButton>
           <SSOButton service='apple'>Apple</SSOButton>
         </SSOContainer>
 
-        <CardDivider> {props.emailDivider} </CardDivider>
+        <CardDivider> {emailDivider} </CardDivider>
         <FormContainer>
 
           <InputContainer
@@ -185,10 +185,10 @@ export default function Auth(props) {
           loading={loading}
           handleSubmit={handleSubmit}
         >
-          {props.submitButton}
+          {submitButton}
         </SubmitButton>
 
-        <OtherLink href={props.otherLinkHref} linkText={props.otherLinkText}>{props.otherQuestion}</OtherLink>
+        <OtherLink href={otherLinkHref} linkText={otherLinkText}>{otherQuestion}</OtherLink>
 
       </MainCard>
     </CenterContent>

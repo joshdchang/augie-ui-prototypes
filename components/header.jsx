@@ -22,30 +22,30 @@ export default function Header() {
   ]
 
   // local components
-  const Header = p => (
+  const Header = ({ children }) => (
     <header className="block relative">
-      {p.children}
+      {children}
     </header>
   )
-  const ColorBar = p => (
-    <div className={`h-3 ${p.color} ${p.offset} ${p.offset && 'rounded-[0_0_1rem_0]'}`}></div>
+  const ColorBar = ({ color, offset }) => (
+    <div className={`h-3 ${color} ${offset} ${offset && 'rounded-[0_0_1rem_0]'}`}></div>
   )
-  const Nav = p => (
+  const Nav = ({ children }) => (
     <div className="grid gap-8 grid-flow-col justify-start p-8 px-24">
-      {p.children}
+      {children}
     </div>
   )
-  const NavItem = p => (
-    <Link href={p.href}>
+  const NavItem = ({ children, href }) => (
+    <Link href={href}>
       <a className="text-slate-300 hover:text-white transition-colors text-lg">
-        {p.children}
+        {children}
       </a>
     </Link>
   )
-  const Logo = p => (
-    <Link href={p.href}>
+  const Logo = ({ href, src }) => (
+    <Link href={href}>
       <img
-        src={p.src}
+        src={src}
         className="absolute right-24 w-32 top-8 hover:cursor-pointer"
       />
     </Link>
