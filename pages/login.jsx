@@ -21,7 +21,7 @@ export default function Login() {
 
       <Auth
         onSubmit={
-          async ({ email, setEmail, password, setPassword, setLoading, setSubmitted }) => {
+          async ({ email, password, reset }) => {
             try {
               const res = await login({
                 variables: {
@@ -36,15 +36,9 @@ export default function Login() {
               alert('Login successful!')
 
             } catch (e) {
-
               console.error(e)
               alert(e)
-
-              // reset form
-              setLoading(false)
-              setSubmitted(false)
-              setEmail('')
-              setPassword('')
+              reset()
             }
           }
         }

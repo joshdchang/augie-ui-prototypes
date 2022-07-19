@@ -7,16 +7,13 @@ import Auth from '../components/auth.jsx'
 
 export default function Signup() {
 
-  const signup = ({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted }) => {
+  const signup = ({ email, password, reset }) => {
     setTimeout(() => {
       alert('Username: ' + email + '\nPassword: ' + password)
-      setLoading(false)
-      setSubmitted(false)
-      setEmail('')
-      setPassword('')
+      reset()
     }, 1000)
   }
-  
+
   return (
     <>
       <Head>

@@ -129,7 +129,13 @@ export default function Auth({ title, SSODivider, emailDivider, submitButton, ot
       setLoading(true)
 
       // simulate send to server
-      onSubmit({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted })
+      const reset = () => {
+        setLoading(false)
+        setSubmitted(false)
+        setEmail('')
+        setPassword('')
+      }
+      onSubmit({ email, password, reset })
     }
   }
 
