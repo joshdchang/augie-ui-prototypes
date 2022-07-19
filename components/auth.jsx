@@ -133,7 +133,7 @@ export default function Auth({ title, SSODivider, emailDivider, submitButton, ot
     }
   }
 
-  // template (very self-documenting I think)
+  // component structure (somewhat self-documenting I think)
   return (
     <CenterContent>
       <MainCard>
