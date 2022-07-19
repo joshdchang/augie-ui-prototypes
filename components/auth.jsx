@@ -84,7 +84,7 @@ const SubmitButton = ({ children, loading, handleSubmit }) => (
   </Button>
 )
 
-export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref }) {
+export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref, onSubmit }) {
 
   // form logic
   const [email, setEmail] = useState('')
@@ -129,7 +129,7 @@ export default function Auth({ title, SSODivider, emailDivider, submitButton, ot
       setLoading(true)
 
       // simulate send to server
-      props.onSubmit({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted })
+      onSubmit({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted })
     }
   }
 

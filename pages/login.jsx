@@ -1,21 +1,17 @@
 
 // routes to /login
 
-// imports
 import Head from 'next/head'
 import Auth from '../components/auth.jsx'
+import { gql, useMutation } from "@apollo/client";
+
+const LOGIN = gql`mutation LoginUser($input: SignInInput!) {
+  signInUser(input: $input)
+}`
 
 export default function Login() {
 
-  const login = ({ email, password, loading, submitted, setEmail, setPassword, setLoading, setSubmitted}) => {
-    setTimeout(() => {
-      alert('Username: ' + email + '\nPassword: ' + password)
-      setLoading(false)
-      setSubmitted(false)
-      setEmail('')
-      setPassword('')
-    }, 1000)
-  }
+  const [login] = useMutation(LOGIN)
 
   return (
     <>
@@ -24,7 +20,30 @@ export default function Login() {
       </Head>
 
       <Auth
-        onSubmit={login}
+        onSubmit={
+          async ({ email, setEmail, password, setPassword, setLoading, setSubmitted }) => {
+            try {
+              const res = await login({
+                variables: {
+                  input: { email, password }
+                }
+              })
+
+              console.log(res)
+              alert('Login successful!')
+              
+            } catch (e) {
+
+              console.error(e)
+              alert(e)
+
+              setLoading(false)
+              setSubmitted(false)
+              setEmail('')
+              setPassword('')
+            }
+          }
+        }
         title='Welcome Back!'
         SSODivider='Login with'
         emailDivider='Or use your email'
