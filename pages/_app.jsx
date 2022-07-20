@@ -3,8 +3,8 @@
 
 import '../styles/globals.css'
 
-import { ApolloProvider } from "@apollo/client";
-import client from "../apollo-client";
+import { ApolloProvider } from '@apollo/client'
+import client from '../graphql/client'
 import Layout from '../components/layout.jsx'
 
 export default function MyApp({ Component, pageProps }) {

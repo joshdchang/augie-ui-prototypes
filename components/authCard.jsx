@@ -84,7 +84,7 @@ const SubmitButton = ({ children, loading, handleSubmit }) => (
   </Button>
 )
 
-export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref, onSubmit }) {
+export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref, onSubmit, passwordLength }) {
 
   // form logic
   const [email, setEmail] = useState('')
@@ -111,8 +111,8 @@ export default function Auth({ title, SSODivider, emailDivider, submitButton, ot
     if (!password) {
       setPasswordInvalid('Password is required')
     } else {
-      if (password.length < 6) {
-        setPasswordInvalid('Password must be at least 6 characters')
+      if (password.length < passwordLength) {
+        setPasswordInvalid(`Password must be at least ${passwordLength} characters`)
       } else {
         setPasswordInvalid('')
       }

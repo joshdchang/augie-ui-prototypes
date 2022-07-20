@@ -1,18 +1,19 @@
 
 // routes to /login
 
-import Head from 'next/head'
-import Auth from '../components/auth.jsx'
-import { gql, useMutation } from "@apollo/client"
-import { useRouter } from 'next/router'
+// TODO - remember me?
+// TODO - forgot password?
 
-const LOGIN = gql`mutation LoginUser($input: SignInInput!) {
-  signInUser(input: $input)
-}`
+import Head from 'next/head'
+import AuthCard from '../components/authCard.jsx'
+import { useMutation } from "@apollo/client"
+import { useRouter } from 'next/router'
+import { LOGIN_USER } from '../graphql/mutations'
+import { client } from '../graphql/client'
 
 export default function Login() {
 
-  const [login] = useMutation(LOGIN)
+  const [login] = useMutation(LOGIN_USER)
   const router = useRouter()
 
   return (
@@ -21,18 +22,19 @@ export default function Login() {
         <title>Login - Augie UI Prototypes</title>
       </Head>
 
-      <Auth
+      <AuthCard
         onSubmit={
           async ({ email, password, reset }) => {
             try {
-              const res = await login({
+              const { data } = await login({
                 variables: {
                   input: { email, password }
                 }
               })
 
               // save token
-              localStorage.setItem('token', res.data.signInUser)
+              localStorage.setItem('token', data.signInUser)
+              client.resetStore()
               router.push('/dashboard')
 
             } catch (e) {
@@ -49,6 +51,7 @@ export default function Login() {
         otherQuestion='New to Augie?'
         otherLinkText='Sign Up'
         otherLinkHref='/signup'
+        passwordLength={0}
       />
 
     </>
