@@ -32,32 +32,26 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
 
   function refresh() {
-    useEffect(() => {
-      const parsedToken = checkToken()
-      if(parsedToken.authenticated !== authenticated) {
-        setAuthenticated(parsedToken.authenticated)
-      }
-      if(parsedToken.user !== user) {
-        setUser(parsedToken.user)
-      }
-      if(parsedToken.authenticated !== authenticated || parsedToken.user !== user) {
-        client.resetStore()
-      }
-    }, [])
+    const parsedToken = checkToken()
+    if (parsedToken.authenticated !== authenticated) {
+      setAuthenticated(parsedToken.authenticated)
+    }
+    if (parsedToken.user !== user) {
+      setUser(parsedToken.user)
+    }
+    if (parsedToken.authenticated !== authenticated || parsedToken.user !== user) {
+      client.resetStore()
+    }
   }
   function logout() {
-    useEffect(() => {
-      localStorage.removeItem('token')
-    }, [])
+    localStorage.removeItem('token')
     refresh()
   }
   function login(token) {
-    useEffect(() => {
-      localStorage.setItem('token', token)
-    }, [])
+    localStorage.setItem('token', token)
     refresh()
   }
-  refresh()
+  useEffect(refresh, [])
 
   return (
     <AuthContext.Provider value={{ authenticated, user, refresh, logout, login }}>
