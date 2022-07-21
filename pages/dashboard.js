@@ -9,6 +9,8 @@ export default function Dashboard() {
 
   const { user } = useContext(AuthContext)
 
+  console.log(user)
+
   return (
     <>
       <Head>
