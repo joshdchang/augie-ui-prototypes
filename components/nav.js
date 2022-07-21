@@ -1,4 +1,6 @@
 
+// TODO think of ways to improve nav
+
 import Link from 'next/link'
 
 // local components
