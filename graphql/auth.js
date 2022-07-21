@@ -33,6 +33,7 @@ export function AuthProvider({ children }) {
 
   const [authenticated, setAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [init, setInit] = useState(false)
   
   function refresh() {
     const parsedToken = checkToken()
@@ -55,11 +56,14 @@ export function AuthProvider({ children }) {
     localStorage.setItem('token', token)
     refresh()
   }
-  useEffect(refresh, [])
+  useEffect(() => {
+    refresh()
+    setInit(true)
+  }, [])
 
   return (
     <AuthContext.Provider value={{ authenticated, user, refresh, logout, login }}>
-      {children}
+      {init && children}
     </AuthContext.Provider>
   )
 }
