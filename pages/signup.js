@@ -7,7 +7,7 @@ import AuthCard from '../components/authCard'
 import { useMutation } from "@apollo/client"
 import { useRouter } from 'next/router'
 import { SIGNUP_USER, LOGIN_USER } from '../graphql/mutations'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuthContext } from '../graphql/auth'
 
 export default function Signup() {
@@ -17,9 +17,11 @@ export default function Signup() {
   const { login, authenticated } = useContext(AuthContext)
   const router = useRouter()
 
-  if (authenticated) {
-    router.push('/dashboard')
-  }
+  useEffect(() => {
+    if (authenticated) {
+      router.push('/dashboard')
+    }
+  }, [authenticated])
 
   return (
     <>

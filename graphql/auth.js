@@ -10,7 +10,7 @@ export function checkToken() {
       const user = jwtDecode(token)
       if (user.exp > new Date().getTime() / 1000) {
         return {
-          authenicated: true,
+          authenticated: true,
           user
         }
       } else {
@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
 
   const [authenticated, setAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-
+  
   function refresh() {
     const parsedToken = checkToken()
     if (parsedToken.authenticated !== authenticated) {
