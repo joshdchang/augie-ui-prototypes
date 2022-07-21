@@ -1,18 +1,29 @@
 
 // routes to /dashboard
 
+// TODO fix bug with it not loading on browser reload
+
 import Head from 'next/head'
 import { LOAD_AUGIES } from '../graphql/queries'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuthContext } from '../graphql/auth'
 import { useQuery } from '@apollo/client'
 import { CenterContent, CardDivider, CardHeader, MainCard } from '../components/util/card'
 import Link from 'next/link'
 import { Button } from 'primereact/button'
+import { useRouter } from 'next/router'
 
 export default function Dashboard() {
 
   const { user, authenticated, logout } = useContext(AuthContext)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!authenticated) {
+      router.push('/')
+    }
+  }, [authenticated])
+
   const { data, loading, error } = useQuery(LOAD_AUGIES)
 
   return (
