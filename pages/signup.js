@@ -14,7 +14,12 @@ export default function Signup() {
 
   const [signupMutation] = useMutation(SIGNUP_USER)
   const [loginMutation] = useMutation(LOGIN_USER)
+  const { login, authenticated } = useContext(AuthContext)
   const router = useRouter()
+
+  if (authenticated) {
+    router.push('/dashboard')
+  }
 
   return (
     <>

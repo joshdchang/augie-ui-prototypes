@@ -16,8 +16,13 @@ import { AuthContext } from '../graphql/auth'
 export default function Login() {
 
   const [loginMutation] = useMutation(LOGIN_USER)
-  const { login } = useContext(AuthContext)
+  const { login, authenticated } = useContext(AuthContext)
   const router = useRouter()
+
+  console.log(authenticated)
+  if (authenticated) {
+    router.push('/dashboard')
+  }
 
   return (
     <>
