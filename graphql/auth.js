@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from 'react'
 import jwtDecode from 'jwt-decode'
 import client from '../graphql/client'
+import { useRouter } from 'next/router'
 
 export function checkToken() {
   if (typeof localStorage !== 'undefined') {
@@ -28,6 +29,8 @@ export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
 
+  const router = useRouter()
+
   const [authenticated, setAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   
@@ -40,12 +43,13 @@ export function AuthProvider({ children }) {
       setUser(parsedToken.user)
     }
     if (parsedToken.authenticated !== authenticated || parsedToken.user !== user) {
-      client.resetStore()
+      client.clearStore()
     }
   }
   function logout() {
     localStorage.removeItem('token')
     refresh()
+    router.push('/')
   }
   function login(token) {
     localStorage.setItem('token', token)

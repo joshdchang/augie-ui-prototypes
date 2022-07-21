@@ -2,6 +2,8 @@
 // routes to /examples
 
 import Head from 'next/head'
+import { CenterContent, CardHeader, MainCard } from '../components/util/card'
+import Nav from '../components/nav'
 
 export default function Examples() {
   return (
@@ -10,7 +12,14 @@ export default function Examples() {
         <title>Examples - Augie UI Prototypes</title>
       </Head>
 
-      <p>Examples Page</p>
+      <Nav />
+      
+      <CenterContent>
+        <MainCard>
+          <CardHeader>Examples</CardHeader>
+          <p>This is a work in progress</p>
+        </MainCard>
+      </CenterContent>
     </>
   )
 }

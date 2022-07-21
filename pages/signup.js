@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { SIGNUP_USER, LOGIN_USER } from '../graphql/mutations'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../graphql/auth'
+import Nav from '../components/nav'
 
 export default function Signup() {
 
@@ -28,6 +29,8 @@ export default function Signup() {
       <Head>
         <title>Sign Up - Augie UI Prototypes</title>
       </Head>
+
+      <Nav />
 
       <AuthCard 
         onSubmit={
@@ -61,6 +64,7 @@ export default function Signup() {
         otherLinkText='Login'
         otherLinkHref='/login'
         passwordLength={8}
+        passwordFeedback={true}
       />
 
     </>

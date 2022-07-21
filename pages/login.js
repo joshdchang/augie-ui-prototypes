@@ -3,7 +3,6 @@
 
 // TODO - remember me?
 // TODO - forgot password?
-// TODO - disable strength meter on login
 
 import Head from 'next/head'
 import AuthCard from '../components/authCard'
@@ -12,6 +11,7 @@ import { useRouter } from 'next/router'
 import { LOGIN_USER } from '../graphql/mutations'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../graphql/auth'
+import Nav from '../components/nav'
 
 export default function Login() {
 
@@ -31,6 +31,8 @@ export default function Login() {
         <title>Login - Augie UI Prototypes</title>
       </Head>
 
+      <Nav />
+      
       <AuthCard
         onSubmit={
           async ({ email, password, reset }) => {
@@ -58,6 +60,7 @@ export default function Login() {
         otherLinkText='Sign Up'
         otherLinkHref='/signup'
         passwordLength={0}
+        passwordFeedback={false}
       />
 
     </>

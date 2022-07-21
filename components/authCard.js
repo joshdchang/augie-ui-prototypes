@@ -7,30 +7,10 @@ import Link from 'next/link'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { Password } from 'primereact/password'
+import { CenterContent, CardDivider, CardHeader, MainCard } from './util/card'
 
 // local components
-const CenterContent = ({ children }) => (
-  <div className='grid justify-items-center'>
-    {children}
-  </div>
-)
-const MainCard = ({ children }) => (
-  <div className='bg-slate-800 w-full max-w-lg rounded-2xl p-11 grid gap-7 text-center'>
-    {children}
-  </div>
-)
-const CardHeader = ({ children }) => (
-  <h2 className='text-2xl font-semibold z-10'>
-    {children}
-  </h2>
-)
-const CardDivider = ({ children }) => (
-  <div className='text-lg text-slate-300 bg-slate-300 text-center border-b-[1px] border-b-slate-300 leading-[1px] my-4'>
-    <span className='bg-slate-800 p-4'>
-      {children}
-    </span>
-  </div>
-)
+
 const SSOContainer = ({ children }) => (
   <div className='grid gap-4 grid-flow-col'>
     {children}
@@ -84,7 +64,7 @@ const SubmitButton = ({ children, loading, handleSubmit }) => (
   </Button>
 )
 
-export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref, onSubmit, passwordLength }) {
+export default function Auth({ title, SSODivider, emailDivider, submitButton, otherQuestion, otherLinkText, otherLinkHref, onSubmit, passwordLength, passwordFeedback }) {
 
   // form logic
   const [email, setEmail] = useState('')
@@ -182,6 +162,7 @@ export default function Auth({ title, SSODivider, emailDivider, submitButton, ot
               inputClassName='w-full pl-10'
               toggleMask
               className={`w-full ${passwordInvalid && submitted && 'p-invalid'}`}
+              feedback={passwordFeedback}
             />
           </InputContainer>
 
