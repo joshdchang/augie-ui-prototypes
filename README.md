@@ -1,8 +1,6 @@
 # Augie UI Prototypes
 
-This repo demonstrates using Tailwind and Next.js to create UI
-
-The [Sign Up page](https://augie-ui-prototypes.vercel.app/signup) is the only one currently done (`pages/signup.jsx`)
+This repo demonstrates using Tailwind, Next.js, and Apollo Client to create UI
 
 ## Preview
 
@@ -14,20 +12,27 @@ The [Sign Up page](https://augie-ui-prototypes.vercel.app/signup) is the only on
 
 `pages/`
   - This directory enables routing based on file system - React components in this directory become pages
-  - Dynamic routing is available (i.e. `localhost:3000/articles/5` would be routed to `pages/articles/[id].jsx`, with `5` available as a property to the component)
-  - `pages/_app.jsx` and `pages/_document.jsx` are used to customize app structure, but can mostly be ignored
+  - Dynamic routing is available (i.e. `localhost:3000/articles/5` would be routed to `pages/articles/[id].js`, with `5` available to the component)
+  - `_app.js` and `_document.js` are used to customize app structure, but can mostly be ignored
 
 `components/`
   - This directory contains global components accessible anywhere in the app
-  - `components/layout.jsx` - default layout
-  - `components/header.jsx` - universal header
-  - `components/footer.jsx` - universal footer
+  - `util/` - contains useful utility components
+  - This could probably be better organized
 
 `public/`
   - This directory contains static assets available from anywhere (i.e. `public/logo.svg` becomes `localhost:3000/logo.svg`)
 
 `styles/`
   - This directory is used to hold stylesheets - can mostly be ignored when using Tailwind
+
+`graphql/`
+  - This directory holds logic for authentication and fetching data from the server
+  - Uses live data from the Alpha!
+  - `auth.js` - authentication logic
+  - `client.js` - Apollo client that handles all requests and makes for unified memoization
+  - `mutations.js` - library of GraphQL mutations
+  - `queries.js` - library of GraphQL queries
 
 `next.config.js`
   - This is the configuration file for Next.js - it is used to set Next options (i.e. whether to use Static Site Generation, Server Side Rendering, or Client-side Rendering)
