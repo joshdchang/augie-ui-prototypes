@@ -3,17 +3,20 @@
 
 // TODO - remember me?
 // TODO - forgot password?
+// TODO - disable strength meter on login
 
 import Head from 'next/head'
-import AuthCard from '../components/authCard.jsx'
+import AuthCard from '../components/authCard'
 import { useMutation } from "@apollo/client"
 import { useRouter } from 'next/router'
 import { LOGIN_USER } from '../graphql/mutations'
-import { client } from '../graphql/client'
+import { useContext } from 'react'
+import { AuthContext } from '../graphql/auth'
 
 export default function Login() {
 
-  const [login] = useMutation(LOGIN_USER)
+  const [loginMutation] = useMutation(LOGIN_USER)
+  const { login } = useContext(AuthContext)
   const router = useRouter()
 
   return (
@@ -26,15 +29,12 @@ export default function Login() {
         onSubmit={
           async ({ email, password, reset }) => {
             try {
-              const { data } = await login({
+              const { data } = await loginMutation({
                 variables: {
                   input: { email, password }
                 }
               })
-
-              // save token
-              localStorage.setItem('token', data.signInUser)
-              client.resetStore()
+              login(data.signInUser)
               router.push('/dashboard')
 
             } catch (e) {

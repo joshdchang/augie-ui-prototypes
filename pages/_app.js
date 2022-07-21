@@ -4,15 +4,19 @@
 import '../styles/globals.css'
 
 import { ApolloProvider } from '@apollo/client'
+import { AuthProvider } from '../graphql/auth'
 import client from '../graphql/client'
-import Layout from '../components/layout.jsx'
+import Layout from '../components/layout'
 
 export default function MyApp({ Component, pageProps }) {
+
   return (
     <ApolloProvider client={client}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AuthProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
     </ApolloProvider>
   )
 }
