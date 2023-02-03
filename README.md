@@ -1,6 +1,6 @@
 # Augie UI Prototypes
 
-This repo demonstrates using Tailwind, Next.js, and Apollo Client to create UI
+This was a proof-of-concept demo I made while interning at a startup during high school. Was mostly some UI prototypes using Tailwind, Next.js, and Apollo Client
 
 ## Preview
 
